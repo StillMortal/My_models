@@ -6,14 +6,22 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('my_models', '0002_homework'),
+        ("my_models", "0002_homework"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='DeadlineError',
+            name="DeadlineError",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
             ],
             bases=(models.Model, Exception),
         ),

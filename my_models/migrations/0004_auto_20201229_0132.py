@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('my_models', '0003_deadlineerror'),
+        ("my_models", "0003_deadlineerror"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='homework',
-            name='deadline',
+            model_name="homework",
+            name="deadline",
             field=models.DurationField(),
         ),
     ]

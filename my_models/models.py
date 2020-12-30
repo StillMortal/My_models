@@ -1,8 +1,9 @@
 from __future__ import annotations
-from django.db import models
 
 import datetime
 from collections import defaultdict
+
+from django.db import models
 
 
 class DeadlineError(models.Model, Exception):
@@ -37,7 +38,9 @@ class Homework(models.Model):
             True if successful, False otherwise.
 
         """
-        return datetime.datetime.now(datetime.timezone.utc) - self.created < self.deadline
+        return (
+            datetime.datetime.now(datetime.timezone.utc) - self.created < self.deadline
+        )
 
 
 class Person(models.Model):
@@ -53,6 +56,7 @@ class Person(models.Model):
         last_name: Last name of a person.
 
     """
+
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
 
@@ -91,7 +95,7 @@ class Student(Person):
                 author=self,
                 homework=hw,
                 solution=solution,
-                created=datetime.datetime.now(datetime.timezone.utc)
+                created=datetime.datetime.now(datetime.timezone.utc),
             )
         raise DeadlineError("You are late.")
 
@@ -127,7 +131,7 @@ class Teacher(Person):
         return Homework(
             text=text,
             deadline=deadline,
-            created=datetime.datetime.now(datetime.timezone.utc)
+            created=datetime.datetime.now(datetime.timezone.utc),
         )
 
     @classmethod
